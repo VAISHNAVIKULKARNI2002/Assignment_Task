@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Testimonials{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card w-75 mx-auto">
+    <div class="card-header">What Our Users Say</div>
+    <div class="card-body">
+      {% for t in testimonials %}
+        <blockquote class="blockquote">
+          <p>{{ t.text }}</p>
+          <footer class="blockquote-footer">{{ t.user }}</footer>
+        </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

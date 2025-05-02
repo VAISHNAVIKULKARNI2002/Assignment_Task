@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card">
+    <div class="card-header">Register</div>
+    <div class="card-body">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="fname" placeholder="First Name" required>
+        <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
+        <input type="text" class="form-control" name="uname" placeholder="Username" required>
+        <input type="password" class="form-control" name="psw" placeholder="Password" required>
+        <button type="submit" class="btn btn-success mb-3">Register</button>
+      </form>
+      <div class="text-center">
+        <a class="text-link" href="{% url 'login' %}">Already have an account?</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Notifications{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card w-75 mx-auto">
+    <div class="card-header">Notifications</div>
+    <div class="card-body">
+      {% for n in notifications %}
+        <div class="mb-3"><strong>{{ n.time }}</strong>: {{ n.msg }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

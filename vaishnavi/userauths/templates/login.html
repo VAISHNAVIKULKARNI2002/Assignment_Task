@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card">
+    <div class="card-header">Login</div>
+    <div class="card-body">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="uname" placeholder="Username" required>
+        <div class="form-check mb-3"><input type="checkbox" class="form-check-input" name="remember" id="remember"><label class="form-check-label" for="remember">Remember Me</label></div>
+<input type="password" class="form-control" name="psw" placeholder="Password" required>
+        <button type="submit" class="btn btn-primary mb-3">Login</button>
+      </form>
+      <div class="text-center">
+        <a class="text-link" href="{% url 'register' %}">Create new account</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}My Notes{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2>My Notes <a href="{% url 'notes_create' %}" class="btn btn-success btn-sm">+ New</a></h2>
+  <div class="row g-3">
+    {% for note in notes %}
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ note.title }}</h5>
+          <p class="card-text">{{ note.content|truncatechars:100 }}</p>
+        </div>
+        <div class="card-footer text-end">
+          <a href="{% url 'notes_delete' note.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p>No notes yet. <a href="{% url 'notes_create' %}">Create one</a>.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

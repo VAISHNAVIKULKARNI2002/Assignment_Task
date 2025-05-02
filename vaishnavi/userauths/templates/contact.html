@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card">
+    <div class="card-header">Contact Us</div>
+    <div class="card-body">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+        <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+        <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-primary mb-3">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

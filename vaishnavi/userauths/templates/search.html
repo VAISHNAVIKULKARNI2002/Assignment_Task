@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card w-75 mx-auto">
+    <div class="card-header">Search Results for "{{ query }}"</div>
+    <div class="card-body">
+      {% if results %}
+        <ul class="list-group">
+          {% for r in results %}
+            <li class="list-group-item"><a href="{{ r.url }}">{{ r.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No results found.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}FAQ{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card w-75 mx-auto">
+    <div class="card-header">FAQ</div>
+    <div class="card-body">
+      {% for f in faqs %}
+        <h5>{{ f.q }}</h5>
+        <p>{{ f.a }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

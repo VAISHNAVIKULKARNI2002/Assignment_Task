@@ -1,0 +1,20 @@
+{% load static %}
+{% extends 'base.html' %}
+{% block title %}Activity Log{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <div class="card w-75 mx-auto">
+    <div class="card-header">Activity Log</div>
+    <div class="card-body">
+      <ul class="list-group">
+        {% for log in logs %}
+          <li class="list-group-item d-flex justify-content-between">
+            {{ log.action }}
+            <span class="text-muted">{{ log.time }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
